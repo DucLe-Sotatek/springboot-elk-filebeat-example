@@ -24,7 +24,7 @@ services:
         soft: 65536
         hard: 65536
     volumes:
-      - /tmp/data:/usr/share/elasticsearch/data
+      - esdata:/usr/share/elasticsearch/data
 
   kibana:
     image: docker.elastic.co/kibana/kibana:6.5.4
@@ -57,7 +57,8 @@ services:
       - "/var/lib/docker/containers:/var/lib/docker/containers"
       # needed to access additional information about containers
       - "/var/run/docker.sock:/var/run/docker.sock"
-
+volumes:
+  esdata:
 networks:
   helloworld:
     driver: "bridge"
